@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+TC:wght@500;700;900&display=swap');
+
+:root { --ink: #23304a; --muted: #71809b; --panel: #ffffff; --accent: #ed8d26; }
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; background: #eaf5ff; color: var(--ink); font-family: 'Noto Sans TC', system-ui, sans-serif; display: grid; place-items: center; overflow-x: hidden; }
+body::before { content: ''; position: fixed; inset: 0; pointer-events: none; opacity: .7; background: linear-gradient(90deg, transparent 49.9%, #c8dff3 50%, transparent 50.1%) center/44px 44px, linear-gradient(0deg, transparent 49.9%, #c8dff3 50%, transparent 50.1%) center/44px 44px; mask-image: linear-gradient(to bottom, #000, transparent 75%); }
+.game-shell { width: min(960px, calc(100% - 32px)); display: grid; grid-template-columns: 1fr 302px 180px; align-items: center; gap: 32px; padding: 32px 0; position: relative; }
+.intro { align-self: start; padding-top: 74px; }
+.eyebrow, .stat p, .help p { font: 500 11px 'DM Mono', monospace; color: var(--muted); letter-spacing: .12em; text-transform: uppercase; margin: 0; }
+h1 { font-size: clamp(45px, 6vw, 78px); line-height: .97; letter-spacing: -.09em; margin: 14px 0 18px; font-weight: 900; }
+h1 span { color: var(--accent); }
+.tagline { color: #aeb9ce; font-size: 14px; letter-spacing: .05em; }
+.board-frame { position: relative; width: 302px; height: 602px; background: #f8fcff; border: 1px solid #92b5d4; box-shadow: 14px 14px 0 #c2dced, 0 12px 32px #4779a633; }
+#board { display: block; width: 300px; height: 600px; }
+.overlay { position: absolute; inset: 0; display: grid; place-items: center; background: #eef8ffdf; backdrop-filter: blur(2px); transition: opacity .2s; }
+.overlay.hidden { opacity: 0; pointer-events: none; }
+.overlay-card { text-align: center; padding: 26px; }
+.overlay-card p { color: var(--accent); font: 500 11px 'DM Mono', monospace; letter-spacing: .12em; margin: 0; }
+.overlay-card h2 { font-size: 28px; margin: 8px 0 20px; color: #23304a; }
+button { font-family: inherit; color: inherit; cursor: pointer; border: 0; }
+.primary-button { background: var(--accent); color: #fff; padding: 12px 34px; font-weight: 900; font-size: 15px; border-radius: 2px; }
+.primary-button:hover { filter: brightness(1.1); transform: translateY(-1px); }
+.panel { display: grid; gap: 12px; align-self: start; padding-top: 34px; }
+.stat, .pause-button, .help { background: var(--panel); border: 1px solid #c5dced; border-radius: 3px; box-shadow: 0 5px 14px #4779a615; }
+.stat { min-height: 76px; padding: 13px 15px; display: grid; align-content: space-between; }
+.stat strong { font: 500 25px 'DM Mono', monospace; color: #2b4c70; letter-spacing: -.06em; }
+.next-card { height: 158px; padding-bottom: 0; }
+#next { width: 120px; height: 120px; justify-self: center; margin-top: -6px; }
+.split { grid-template-columns: 1fr 1fr; align-content: center; gap: 10px; }
+.split > div + div { border-left: 1px solid #d6e5f2; padding-left: 14px; }
+.pause-button { padding: 13px 15px; text-align: left; font-weight: 700; font-size: 13px; display: flex; justify-content: space-between; }
+.pause-button span { font: 400 10px 'DM Mono', monospace; color: var(--muted); }
+.pause-button:hover { border-color: var(--accent); }
+.help { padding: 14px 15px; display: grid; gap: 5px; }
+.help p { margin-bottom: 4px; }
+.help span { font: 11px 'DM Mono', monospace; color: #536a87; }
+.controls { display: none; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 22px; }
+.controls button { height: 48px; background: #fff; border: 1px solid #bdd8ed; border-radius: 4px; font-size: 23px; font-family: sans-serif; color: #2b4c70; }
+.controls .rotate { color: var(--accent); }.controls button:last-child { grid-column: 2; }
+@media (max-width: 800px) { .game-shell { grid-template-columns: 302px 180px; justify-content: center; }.intro { grid-column: 1 / -1; padding: 0; text-align: center; }.intro h1 { font-size: 45px; }.tagline { margin-bottom: 0; } }
+@media (max-width: 540px) { body { display: block; }.game-shell { width: min(100% - 20px, 380px); grid-template-columns: 1fr; gap: 18px; padding: 22px 0; }.intro { display: none; }.game-area { justify-self: center; }.board-frame { width: min(302px, calc(100vw - 22px)); height: min(602px, calc((100vw - 22px) * 2)); }.board-frame canvas { width: 100% !important; height: 100% !important; }.panel { padding: 0; grid-template-columns: 1fr 1fr; }.next-card { height: 100px; }.next-card #next { display: none; }.stat { min-height: 64px; }.help { display: none; }.pause-button { grid-column: 1 / -1; }.controls { display: grid; } }

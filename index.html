@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111827" />
+    <title>方塊節奏 · 俄羅斯方塊</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <section class="intro">
+        <p class="eyebrow">CLASSIC ARCADE</p>
+        <h1>方塊<br /><span>節奏</span></h1>
+        <p class="tagline">讓每一塊找到剛好的位置。</p>
+      </section>
+
+      <section class="game-area" aria-label="俄羅斯方塊遊戲">
+        <div class="board-frame">
+          <canvas id="board" width="300" height="600" aria-label="遊戲棋盤"></canvas>
+          <div id="overlay" class="overlay">
+            <div class="overlay-card">
+              <p id="overlay-kicker">準備好了嗎？</p>
+              <h2 id="overlay-title">開始遊戲</h2>
+              <button id="start-button" class="primary-button">開始</button>
+            </div>
+          </div>
+        </div>
+        <div class="controls" aria-label="觸控控制">
+          <button data-action="left" aria-label="向左移動">←</button>
+          <button data-action="rotate" class="rotate" aria-label="旋轉">↻</button>
+          <button data-action="right" aria-label="向右移動">→</button>
+          <button data-action="down" aria-label="加速下落">↓</button>
+        </div>
+      </section>
+
+      <aside class="panel">
+        <div class="stat next-card">
+          <p>下一個</p>
+          <canvas id="next" width="120" height="120" aria-label="下一個方塊"></canvas>
+        </div>
+        <div class="stat"><p>分數</p><strong id="score">000000</strong></div>
+        <div class="stat split"><div><p>等級</p><strong id="level">01</strong></div><div><p>消除</p><strong id="lines">00</strong></div></div>
+        <button id="pause-button" class="pause-button">暫停 <span>Space</span></button>
+        <div class="help">
+          <p>操作方式</p>
+          <span>← → 移動</span><span>↑ 旋轉</span><span>↓ 加速</span><span>Space 暫停</span>
+        </div>
+      </aside>
+    </main>
+    <script src="game.js"></script>
+  </body>
+</html>
